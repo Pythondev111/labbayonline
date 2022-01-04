@@ -1,0 +1,1 @@
+from DjangoFiles.wsgi import application

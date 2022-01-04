@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+
+	<link href="{% static './css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+ <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <meta charset="UTF-8">
+    <title>Kirish</title>
+    <style>
+        #id_username,#id_password, #id_password1,#id_password2 {
+	width: 100%;
+	font-size: 50px;
+    padding: 5px 15px;
+    margin: 2px 10px;
+    display:inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.alert {
+    font-size: 40px;
+}
+.password-kirish{
+        position: relative;
+
+}
+.show-password{
+     
+     	font-size:40px;
+        top:35px;
+     	right: 35px;
+        opacity: 1;
+        float:right;
+        z-index:999;
+        
+} .hide-password{
+        top:35px;
+     	right: 75px;
+        opacity: 0;
+        font-size:40px;
+        float:right;
+        z-index:999;
+}
+.btn-log-in{
+    padding:5px;
+    font-size:35px;
+    margin-top:20px;
+}
+    </style>
+</head>
+<body>
+<form action="{% url 'loginn' %}" class="modal-content animate" method='post'>
+    {% csrf_token %}
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display = 'none'" class="close" title="Close Modal">&times;</span>
+            <img src="./images/logo1.jpg" alt="Avatar" class="avatar">
+        </div>
+        <div class="conta">
+            {% if messages %}
+            {% for m in messages %}
+            {{m}}
+            {% endfor %}
+            {% endif %}
+            {{form}}
+            <i class="fas fa-eye show-password"></i>
+            <i class="fas fa-eye-slash hide-password"></i>
+
+            <button class="btn btn-success btn-log-in" type="submit">Login</button>
+
+        </div>
+    </form>
+    <script>
+          document.querySelector('.show-password').addEventListener('click',function(){
+            document.querySelector('#id_password').setAttribute('type','text');
+            document.querySelector('.show-password').style.opacity = '0';
+            document.querySelector('.hide-password').style.opacity = "1";
+        })
+        document.querySelector('.hide-password').addEventListener('click',function(){
+            document.querySelector('#id_password').setAttribute('type','password');
+            document.querySelector('.hide-password').style.opacity = "0";
+            document.querySelector('.show-password').style.opacity = '1';
+        })
+    </script>
+</body>
+</html>

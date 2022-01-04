@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+
+    <div class="modal-content animate" method='post'>
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display = 'none'" class="close"
+                title="Close Modal">&times;</span>
+            <img src="./images/logo1.jpg" alt="Avatar" class="avatar">
+        </div>
+        <form action="{% url 'korzinka'  %}" method="post">
+            {% csrf_token %}
+        <div class="conta">
+            <label> <b>Ismingiz</b></label>
+            <input type="text"  name="anketa" value="{{user.username}}" style="display:none">
+            <input type="text" placeholder="Ismingiz" name="ism" required>
+            <label> <b>Familyangiz</b></label>
+            <input type="text" placeholder="Familyangiz" name="fam" required>
+            <label for="number"><b>Telefon raqamingiz</b></label>
+            <input type="text" placeholder="+998 91 123 45 67" id="phone" name='tel'>
+            <br>
+            <label>Jinsni tanlang</label><br>
+            <select class="form-control" id="sel1" name='jins'>
+                <option>Erkak</option>
+                <option>Ayol</option>
+            </select><br>
+            <label for sel1>Yosh oralig'ini tanlang</label>
+            <select class="form-control"  name='yosh'>
+                <option>8-15</option>
+                <option>15-25</option>
+                <option>25-40</option>
+                <option>40-55</option>
+                <option>55+</option>
+            </select>
+            <label for sel1>Yashash manzilingizni kiriting</label>
+            <select class="form-control"  name='shaxar'>
+                <option>Beshariq</option>
+                <option>Bog'dod</option>
+                <option>Buvayda</option>
+                <option>Dang'ara</option>
+                <option>Farg'ona (shaxar)</option>
+                <option>Farg'oma (tuman)</option>
+                <option>Furqat</option>
+                <option>Marg'ilon (shaxar)</option>
+                <option>O'zbekiston</option>
+                <option>Oltiariq</option>
+                <option>Qo'qon (shaxar)</option>
+                <option>Qo'shtepa</option>
+                <option>Quva</option>
+                <option>Quvasoy</option>
+                <option>Rishton </option>
+                <option>Toshloq</option>
+                <option>Uchko'prik</option>
+                <option>Yozyovon</option>
+
+            </select>
+
+            <button type="submit">Jo'natish</button>
+
+        </div>
+             </form>
+
+    </div>
+     
+
+    
+    
+            
+
+
+
+</body>
+</html>

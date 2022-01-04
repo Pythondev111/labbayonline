@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	{% load static %}
+<title>LABBAY</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+	function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/fasthover.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/popuo-box.css' %}" rel="stylesheet" type="text/css" media="all" />
+
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+<link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/jquery.countdown.css' %}" /> <!-- countdown -->
+
+<link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+
+<style>
+	.end{
+	text-align: center;
+	}
+	.first{
+	text-align: centre;
+	}
+	.anketa-modal{
+	    display:none;
+	    position:absolute;
+	    top:20px;
+	    bottom:0px;
+	    right:10px;
+	    left:10px;
+	    z-index:9999;
+	    height:500px;
+	    background-color:white;
+	    border-radius:20px;
+	}
+
+</style>
+
+</head>
+<body>
+<div id="signIn">
+
+	</div>
+	<div id="logIn">
+
+	</div>
+<header>
+        <a href="#" class="brand"><img src="{% static './images/logo1.jpg'% }" alt=""/><span> LABBAY</span></a>
+        <div class="menu-btn"></div>
+		<div class="navigation1">
+			<i class="far fa-user-circle"></i>
+			<div class="modal-sign-in">
+				{% if user.id in not None %}
+			<strong> {{ user.username }}</strong>
+			{% else %}
+			<a href='{% url "signin" %}' class="btn signIn">Ro'yxatdan O'tish</a>
+			{% endif %}
+			<a href="{% url 'loginn' %}" class=" btn logIn">Kirish</a>
+			<a href="{% url 'logout' %}" class=" btn logIn">Chiqish</a>
+			<i class="fas fa-close"></i>
+			</div>
+
+			
+		</div>
+	</header>
+<div class="navigation">
+		<div class="">
+			<nav class="navbar navbar-default">
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav">
+						<li><a href="{% url 'index' %}">Bosh Sahifa</a></li>
+						<li>
+							<a href="{% url 'maxsulotlar' %}">Maxsulotlar</a>
+						</li>
+						<li>
+							<a href="{% url 'korzinka' %}" class="act" >Savatcha</a>
+						</li>
+						<li><a href="{% url 'about' %}">Biz Haqimizda</a></li>
+						<li><a href="{% url 'boglansh' %}">Bog'lanish</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<div class="task-nav">
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-1">
+				<a href="{% url 'index' %}" >
+					<i class="fa fa-home"></i>
+				</a>
+			</div>
+			<div class="col-xs-2">
+				<a href="{% url 'maxsulotlar' %}">
+					<i class="fa fa-cart-plus"></i>
+			</a>
+			</div>
+			<div class="col-xs-2">
+				<a href="{% url 'korzinka' %}" class="act">
+					<i class="fa fa-cart-arrow-down"></i>
+				</a>
+			</div>
+			<div class="col-xs-2">
+				<a href="{% url 'about' %}">
+					<i class="fa fa-info"></i>
+				</a>
+			</div>
+			<div class="col-xs-2">
+				<a href="{% url 'boglansh' %}">
+					<i class="fa fa-users"></i>
+				</a>
+			</div>
+		</div>
+
+
+	</div>
+	<div class="banner banner10">
+		<div class="container">
+			<h2>About Us</h2>
+		</div>
+	</div>
+	
+	<div class="breadcrumb_dress">
+		<div class="container">
+			<ul>
+				<li><a href="{% url 'index' %}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Bosh Saxifa</a> <i>/</i></li>
+				<li>Savatcha</li>
+			</ul>
+		</div>
+	</div>
+<div class="container">
+ <div class="table-header">
+	 <h1>Sotib olingan maxsulotlar</h1>
+ </div>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Nomi</th>
+        <th>Narxi</th>
+        <th>Soni</th>
+		<th>O'chirish</th>
+
+      </tr>
+    </thead>
+    <tbody>
+	{% for maxx in basket %}
+      <tr>
+        <td>{{maxx.nomi}}</td>
+        <td>{{maxx.narxi}}</td>
+        <td>{{maxx.miqdori}}dona</td>
+        <td><a href="{% url 'delete' maxx.id %}" class="btn btn-danger">-</a> </td>
+      </tr>
+	{% endfor %}
+    </tbody>
+  </table>
+  <h3 style="text-align: center;"> Umumiy summa: {{ summa }}UZS</h3>
+</div>
+<div class="anketa-modal">
+	<div class="containe" style="padding: 16px;">
+		 <div class="conta">
+			      <h4>Ma'lumotlaringizni masdiqlang</h4>
+				<label> <b>Ismingiz</b></label>
+				<input type="text"  name="anketa" value="{{user.username}}" style="display:none">
+				<input type="text" placeholder="Ismingiz" name="ism" required>
+				<label> <b>Familyangiz</b></label>
+				<input type="text" placeholder="Familyangiz" name="fam" required>
+				<label for="number"><b>Telefon raqamingiz</b></label>
+				<input type="text" placeholder="+998 91 123 45 67" id="phone" name='tel'>
+				<br>
+				<label>Jinsni tanlang</label><br>
+				<select class="form-control" id="sel1" name='jins'>
+					<option>Erkak</option>
+					<option>Ayol</option>
+				</select><br>
+				<label for sel1>Yosh oralig'ini tanlang</label>
+				<select class="form-control"  name='yosh'>
+					<option>8-15</option>
+					<option>15-25</option>
+					<option>25-40</option>
+					<option>40-55</option>
+					<option>55+</option>
+				</select>
+				<label for sel1>Yashash manzilingizni kiriting</label>
+				<select class="form-control"  name='shaxar'>
+					<option>Beshariq</option>
+					<option>Bog'dod</option>
+					<option>Buvayda</option>
+					<option>Dang'ara</option>
+					<option>Farg'ona (shaxar)</option>
+					<option>Farg'oma (tuman)</option>
+					<option>Furqat</option>
+					<option>Marg'ilon (shaxar)</option>
+					<option>O'zbekiston</option>
+					<option>Oltiariq</option>
+					<option>Qo'qon (shaxar)</option>
+					<option>Qo'shtepa</option>
+					<option>Quva</option>
+					<option>Quvasoy</option>
+					<option>Rishton </option>
+					<option>Toshloq</option>
+					<option>Uchko'prik</option>
+					<option>Yozyovon</option>
+	
+				</select>
+				<button class="btn btn-success">Tasdiqlash</button>
+			</div>
+			 	
+		</div>
+      </div>
+    </div>
+  </div>
+  				<button class="btn btn-success rewrite-anketa">Tasdiqlash</button>
+
+
+<div class="newsletter">
+	<div class="row">
+		<div class="col-xs-3">
+			<a class="fa fa-facebook" href=""></a>
+		</div>
+		<div class="col-xs-3">
+			<a class="fa fa-instagram" href=""></a>
+		</div>
+		<div class="col-xs-3">
+			<a class="fa fa-youtube" href=""></a>
+		</div>
+		<div class="col-xs-3">
+			<a class="fab fa-telegram" href=""></a>			
+		</div>
+	</div>
+	<div class="clearfix"> </div>
+</div>
+<script>
+	document.querySelector('.fa-user-circle').addEventListener('click', function () {
+		document.querySelector('.modal-sign-in').style.display = 'block';
+	})
+	document.querySelector('.fa-close').addEventListener('click', function () {
+		document.querySelector('.modal-sign-in').style.display = 'none';
+	})
+		document.querySelector('.rewrite-anketa').addEventListener('click',function(){
+		    console.log('bosildi');
+      document.querySelector('.anketa-modal').style.display = "block";
+	 
+	})
+
+</script>
+<script src="{% static 'js/jquery.countdown.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script> 
+</body>
+
+</html>

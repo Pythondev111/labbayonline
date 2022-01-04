@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <meta charset="UTF-8">
+    <style>
+     #id_username,#id_password, #id_password1,#id_password2 {
+	width: 100%;
+	font-size: 50px;
+    padding: 10px 15px;
+    margin: 2px 0;
+    display:inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+        #id_password1{
+    	position: relative;
+
+}
+.show-password{
+     	position: absolute;
+     	font-size:40px;
+        margin: 35px 15px;
+     	right: 35px;
+        opacity: 1;
+        
+} .hide-password{
+     	position: absolute;
+        margin: 35px 15px;
+     	right: 75px;
+        opacity: 0;
+        font-size:40px;
+        
+}
+        .password-confirmation-wrapper{
+    	position: relative;
+
+}
+.show-password-confirmation{
+     	position: absolute;
+     	font-size:40px;
+        margin: 35px 15px;
+        top:35px;
+     	right: 35px;
+        opacity: 1;
+        
+} .hide-password-confirmation{
+     	position: absolute;
+        margin: 35px 15px;
+        top:35px;
+     	right: 75px;
+        opacity: 0;
+        font-size:40px;
+        
+}
+.conta  form label{
+    font-size: 30px;
+}
+.alert-warning{
+    font-size:30px;
+}
+.sign-in-btn{
+    padding:5px;
+    font-size:35px;
+    margin-top:20px;
+}
+    </style>
+    <title>Ro'yxatdan O'tish</title>
+
+</head>
+
+<body>
+    <div class="modal-content animate" method='post'>
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display = 'none'" class="close"
+                title="Close Modal">&times;</span>
+            <img src="./images/logo1.jpg" alt="Avatar" class="avatar">
+        </div>
+        <div class="conta qadam1">
+
+            {% if messages %}
+                {% for m in messages %}
+                    {{m}}
+                {% endfor %}
+            {% endif %}
+            <form method="post"  action="{% url 'signin' %}">
+                {% csrf_token %}
+                <!-- {{form}}-->
+                <label>Username</label>
+                {{form.username}}
+                <label>Parol</label>
+                {{form.password1}}
+                <i class="fas fa-eye show-password"></i>
+                <i class="fas fa-eye-slash hide-password"></i>
+                <div class="alert alert-warning alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Diqqat!!</strong> Parol 8 xonadan kam bo'lmasligi lozim
+                </div>
+                <div class="alert alert-warning alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Diqqat!!</strong> Parolda Son, katta, kichik lotin harflari ishtirok etishi lozim
+                </div>
+                <div class="password-confirmation-wrapper">
+                    <label>Parolni Takrorlang</label>
+                {{form.password2}}
+                <i class="fas fa-eye show-password-confirmation"></i>
+                <i class="fas fa-eye-slash hide-password-confirmation"></i>
+                <button  type="submit" class="btn btn-success sign-in-btn"  name="Create user" >Saqlash </button>
+                </div>
+            </form>
+           
+
+        </div>
+    </div>
+    <script>
+        document.querySelector('.show-password').addEventListener('click',function(){
+            document.querySelector('#id_password1').setAttribute('type','text');
+            document.querySelector('.show-password').style.opacity = '0';
+            document.querySelector('.hide-password').style.opacity = "1";
+        })
+        document.querySelector('.hide-password').addEventListener('click',function(){
+            document.querySelector('#id_password1').setAttribute('type','password');
+            document.querySelector('.hide-password').style.opacity = "0";
+            document.querySelector('.show-password').style.opacity = '1';
+        })
+        document.querySelector('.show-password-confirmation').addEventListener('click',function(){
+            document.querySelector('#id_password2').setAttribute('type','text');
+            document.querySelector('.show-password-confirmation').style.opacity = '0';
+            document.querySelector('.hide-password-confirmation').style.opacity = "1";
+        })
+        document.querySelector('.hide-password-confirmation').addEventListener('click',function(){
+            document.querySelector('#id_password2').setAttribute('type','password');
+            document.querySelector('.hide-password-confirmation').style.opacity = "0";
+            document.querySelector('.show-password-confirmation').style.opacity = '1';
+        })
+    </script>
+    
+</body>
+
+</html>
